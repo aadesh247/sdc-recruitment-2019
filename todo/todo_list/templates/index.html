@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDoList</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<style type="text/css">
+		body{
+			background-color: #34495E;
+			color: white;
+		}
+
+		ul{
+			list-style: none;
+			margin-top: 2rem;
+			border-top: 2px solid white;
+		}
+
+		li{
+			border-bottom: 1px solid white;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
+
+		h1{
+			margin-top: 10rem;
+		}		
+		
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="text-center display-1">ToDoList</h1>
+
+		<div class="row">
+
+			<form class= "col-7 mx-auto" action="{% url 'add' %}" method="POST" role="form">
+				{% csrf_token %}
+			  <div class="input-group">
+			    {{form.content}}<span><button type="submit" class="btn btn-primary">Add</button></span>			    
+			  </div>			 		  
+			  
+			</form>
+		</div>
+
+		<div class="row">
+			
+			<ul class="col-7 mx-auto">
+
+				{% for item in all_items %}
+					<li>{{ item.content }} <a href="{% url 'delete' item.id %}">Delete</u></a></li>
+				{% endfor %}
+				
+			</ul>
+
+		</div>
+
+	</div>	
+
+</body>
+</html>
