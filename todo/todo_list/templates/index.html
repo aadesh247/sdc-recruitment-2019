@@ -32,10 +32,10 @@
 <body>
 	<div class="container">
 		<h1 class="text-center display-1">ToDoList</h1>
-
+		
 		<div class="row">
 
-			<form class= "col-7 mx-auto" action="{% url 'add' %}" method="POST" role="form">
+			<form class= "col-3 mx-auto" action="{% url 'add' %}" method="POST" role="form">
 				{% csrf_token %}
 			  <div class="input-group">
 			    {{form.content}}<span><button type="submit" class="btn btn-primary">Add</button></span>			    
@@ -49,7 +49,7 @@
 			<ul class="col-7 mx-auto">
 
 				{% for item in all_items %}
-					<li>{{ item.content }} <a href="{% url 'delete' item.id %}">Delete</u></a></li>
+					<li>{{ item.content }} <a href="{% url 'delete' item.id %}" style="float:right;color:red">Delete</u></a></li>
 				{% endfor %}
 				
 			</ul>
