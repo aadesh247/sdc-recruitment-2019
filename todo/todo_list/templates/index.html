@@ -12,6 +12,9 @@
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Righteous&display=swap" rel="stylesheet">
+
 	<style type="text/css">
 		body{
 			 background-color: #34495E; 
@@ -19,7 +22,8 @@
 			 /*background-position: center;*/
 			 background-size: cover; 
 			 color: white;
-		}	
+			 font-family: 'Open Sans', sans-serif;			 
+		}			
 
 		.hero{
 			background-color: rgba(51,51,51,0.3);
@@ -43,7 +47,8 @@
 		}
 
 		h1{
-			margin-top: 10rem;
+			margin-top: 10rem;	
+			font-family: 'Righteous', cursive;		
 		}		
 		
 	</style>
@@ -52,11 +57,11 @@
 <body>
 	<div class="hero">
 		<div class="container">
-			<h1 class="text-center display-1">ToDoList</h1>			
-			
+			<h1 class="text-center display-1">ToDoList</h1>	
+
 			<div class="row">
 
-				<form class= "col-3 mx-auto" action="{% url 'add' %}" method="POST" role="form">
+				<form class= "col-5 mx-auto" action="{% url 'add' %}" method="POST" role="form">
 					{% csrf_token %}
 				  <div class="input-group">
 				    {{form.content}}<span><button type="submit" class="btn btn-primary">Add</button></span>			    
@@ -70,7 +75,10 @@
 				<ul class="col-7 mx-auto">
 
 					{% for item in all_items %}
-						<li>{{ item.content }} <a href="{% url 'delete' item.id %}" style="float:right;color:red">Delete</u></a></li>
+						<!-- <li>{{ item.content }} <a href="{% url 'delete' item.id %}" style="float:right;color:red">Delete</a></li> -->
+
+						<li>{{ item.content }} <a href="{% url 'delete' item.id %}" class="btn btn-outline-danger btn-sm" role="button" style="float:right">Delete</a></li>
+
 					{% endfor %}
 					
 				</ul>
